@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteoh <rteoh@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 02:45:37 by rteoh             #+#    #+#             */
-/*   Updated: 2025/09/14 11:27:08 by rteoh            ###   ########.fr       */
+/*   Created: 2025/09/14 12:59:41 by rteoh             #+#    #+#             */
+/*   Updated: 2025/09/14 14:26:37 by rteoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_HPP
-#define Form_HPP
+
+#ifndef AForm_HPP
+#define AForm_HPP
 
 #include "Bureaucrat.hpp"
 #include <string>
@@ -19,7 +20,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string	name;
@@ -27,11 +28,11 @@ class Form
 		const int			gradeExe;
 		bool				isSigned;
 	public:
-		Form();
-		Form(const std::string& n, int gs, int ge);
-		Form(const Form& other);
-		Form& operator=(const Form& other);
-		~Form();
+		AForm();
+		AForm(const std::string& n, int gs, int ge);
+		AForm(const AForm& other);
+		AForm& operator=(const AForm& other);
+		virtual ~AForm();
 
 		const	std::string& getName() const;
 		int		getGrade() const;
@@ -43,6 +44,7 @@ class Form
 		int		getGradeExe() const;
 		bool	getIsSigned() const;
 		std::string	getFormName() const;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 		
 		
 		class GradeTooHighException : public std::exception
@@ -68,9 +70,14 @@ class Form
 		public:
 		const char* what() const throw();
 	};
+	class ExecutionException : public std::exception
+	{
+		public:
+		const char* what() const throw();
+	};
 	
 };
 
-std::ostream&	operator<<(std::ostream& out, const Form& f);
+std::ostream&	operator<<(std::ostream& out, const AForm& f);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rteoh <rteoh@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 01:50:51 by rteoh             #+#    #+#              #
-#    Updated: 2025/09/14 11:23:20 by rteoh            ###   ########.fr        #
+#    Updated: 2025/09/14 15:28:40 by rteoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= Bureaucrat
 CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -pedantic
 RM			:= rm -f
-SOURCES		:= main.cpp Bureaucrat.cpp Form.cpp
+SOURCES		:= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 OBJECTS 	:= $(SOURCES:.cpp=.o)
 
 all: $(NAME)

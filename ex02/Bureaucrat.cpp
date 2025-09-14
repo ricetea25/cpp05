@@ -6,7 +6,7 @@
 /*   By: rteoh <rteoh@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 01:53:23 by rteoh             #+#    #+#             */
-/*   Updated: 2025/09/14 12:29:15 by rteoh            ###   ########.fr       */
+/*   Updated: 2025/09/14 16:58:54 by rteoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	Bureaucrat::decrementGrade()
 	this->grade += 1;
 }
 
-void	Bureaucrat::signForm(Form& f)
+void	Bureaucrat::signForm(AForm& f)
 {
 	if (this->grade > f.getGradeSign())
-		std::cout << name << " couldn't sign Form " << f.getFormName() << " because credit score too low" << std::endl;
+		std::cout << "Bureaucrat " << name << " with grade " << this->grade << " couldn't sign Form " << f.getFormName() << " because credit score too low" << std::endl;
 	else {
-		std::cout << name << " signed Form " << f.getFormName() << std::endl;
+		std::cout << "Bureaucrat " << name << " with grade " << this->grade << " signed Form " << f.getFormName() << std::endl;
 		f.beSigned(*this);
 	}
 
@@ -97,4 +97,8 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 	return out;
 }
 
-
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	form.execute(*this);
+    std::cout << this->name << " executes " << form.getFormName() << "." << std::endl;
+}
