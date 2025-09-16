@@ -6,7 +6,7 @@
 /*   By: rteoh <rteoh@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:48:37 by rteoh             #+#    #+#             */
-/*   Updated: 2025/09/14 16:50:16 by rteoh            ###   ########.fr       */
+/*   Updated: 2025/09/16 07:52:54 by rteoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int main()
 	std::cout << "--- RobotomyRequestForm Test ---" << std::endl;
 	try
 	{
+		std::srand(std::time(0));
 		RobotomyRequestForm robotomyForm("Bender");
 		std::cout << robotomyForm << std::endl;
 
@@ -82,7 +83,10 @@ int main()
 		highGradeBureaucrat.signForm(pardonForm);
 		std::cout << pardonForm << std::endl;
 		
-		lowGradeBureaucrat.executeForm(pardonForm); // This should fail
+		// lowGradeBureaucrat.executeForm(pardonForm); // This should fail
+		// std::cout << std::endl;
+
+		highGradeBureaucrat.executeForm(pardonForm);
 		std::cout << std::endl;
 	}
 	catch (const std::exception& e)
